@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Product> 
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products</title>
+    <style>
+        .masonry-container {
+            columns: 4;
+            column-gap: 1em;
+        }
+
+        .masonry-item {
+            background: #f7f7f7;
+            border: 1px solid #ccc;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 1em;
+            display: inline-block;
+            width: 100%;
+            break-inside: avoid-column;
+        }
+
+        .masonry-content {
+            padding: 10px;
+        }
+        
+        .image-placeholder {
+            background: #ddd;
+            width: 100%;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="masonry-container">
+        @foreach (var product in Model)
+        {
+            <div class="masonry-item">
+                <div class="image-placeholder" style="height: @(product.ProductId*30)px; background: #ddd; width: 100%;"></div>
+                <div class="masonry-content">
+                    <h3>@product.ProductName</h3>
+                    <p>Price: @product.UnitPrice</p>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>
+
